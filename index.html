@@ -43,8 +43,8 @@
     <!--INICIO DO MENU-->
     <div id="menu">
 
-        <main class="grid grid-cols-1">
-
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+ 
             <!--Produto Item 1 -->
             <div class="flex gap-2">
                 <img
@@ -297,7 +297,79 @@
             </div>
             <!--FIM DO PRODUTO-->
 
+            
+
+            
         </main>
+
+        <div class="mx-auto max-w-7xl px-2 my-2 ">
+            <h2 class="front-blond text-3xl">
+                Bebidas
+            </h2>
+        </div>
+
+        <!--Grid Bebidas-->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
+            <!--Produto Item BEBIDA 2 -->
+            <div class="flex gap-2 w-full">
+                <img
+                 src="./assets/Coca-cola.png"
+                 alt="Coca-cola"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div class="w-full">
+                    <p class="font-bold">Coca-cola </p>
+                    <p class="text-sm">350 ml.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 4.99</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Coca-cola"
+                            data-price="4.99"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 9 -->
+            <div class="flex gap-2 w-full">
+                <img
+                 src="./assets/Guarana Antartica.png"
+                 alt="Guarana"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div class="w-full">
+                    <p class="font-bold">Guarana Antartica 1,5L </p>
+                    <p class="text-sm">1,5 L.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 11.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Guarana Antartica"
+                            data-price="11.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+        </div>
+
+    
+        <!--Fim Grid Bebidas-->
+
 
     </div>
     <!--FIM DO MENU-->
