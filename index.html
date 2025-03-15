@@ -4,27 +4,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./styles/output.css" />
-
-
 
     <title> Gestão de Pedidos </title>
 </head>
 <body>
 
     <!-- Header -->
-    <header>
-        <div>
+    <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+        <div class="w-full h-full flex flex-col justify-center items-center">
             <img
-            src="./assets/uma-pizza-com-fundo-preto-e-fundo-preto_894754-885.avif"
+            src="./assets/Logo.jpeg"
             alt="Logo da Pizza"
-            class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200 mx-auto mt-4"
+            class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
             />
-            <h1 class="text-3xl mt-4 mb-2 font-bold text-center"> Pizzaria Pizzaria</h1>
+            <h1 class="text-4xl mt-4 mb-2 font-bold text-white">
+                 Pizzaria Recanto
+            </h1>
+
+            <span class="text-white font-medium">Rua dev 12, Sao Paulo - SP</span>
+
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-5">
+                <span class="text-white font-medium">Seg á Dom - 18:00 as 23:00</span>
+            </div>
+
         </div>
     </header>
-
      <!-- FIM do Header -->
 
+    <h2 class="text-2xl md:text-3xl font-blond text-center mt-9 mb-6">
+        Conheça nosso menu
+    </h2>
+
+    <!--INICIO DO MENU-->
+    <div id="menu">
+
+        <main class="grid grid-cols-1">
+
+            <!--Produto Item 1 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Italiana.avif"
+                 alt="Pizza Italiana"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Italiana </p>
+                    <p class="text-sm"> Molho, Mussarela, Tomate pequeno, cebola, Manjericao.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 24.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza Italiana"
+                            data-price="24.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 2 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza 5 queijos.avif"
+                 alt="Pizza 5 queijos"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza 5 queijos </p>
+                    <p class="text-sm">Mussarela, Catupiry, parmesão, Gorgonzola, Provolone.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 19.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza 5 queijos"
+                            data-price="19.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 3 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza de Peperoni.jpg"
+                 alt="Pizza 5 queijos"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Peperoni </p>
+                    <p class="text-sm">Molho, Mussarela, Peperoni, oregano.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 22.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza de Peperoni"
+                            data-price="22.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 4 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza de Bacon.avif"
+                 alt="Pizza de Torresmo"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza de Torresmo </p>
+                    <p class="text-sm">Molho, Mussarela, Torresmo, azeitona preta, cebola, oregano.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 27.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza de Torresmo"
+                            data-price="27.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 5 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Portuguesa.webp"
+                 alt="Pizza Portuguesa"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Portuguesa </p>
+                    <p class="text-sm">Molho, Mussarela, Calabresa, Milho Verde, Ovo, Pimentao, Cebola, Bacon.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 27.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza Portuguesa"
+                            data-price="27.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 6 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Frango Catupiry.jpg"
+                 alt="Pizza Frango com Catupiry"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Frango com Catupiry </p>
+                    <p class="text-sm">Molho, Mussarela, Frango, Catupiry, oregano.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 24.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza de Peperoni"
+                            data-price="24.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 7 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Tomate.avif"
+                 alt="Pizza de Tomate"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza de Tomate </p>
+                    <p class="text-sm">Molho, Mussarela, Tomate, tomate pequeno, azeitona preta, cebola, alface americano.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 25.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza de Tomate"
+                            data-price="25.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 8 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Cereja.jpg"
+                 alt="Pizza Cereja"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Cereja </p>
+                    <p class="text-sm">Chocolate, Cereja, confeito de Chocolate.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 25.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza Cereja"
+                            data-price="25.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+            <!--Produto Item 9 -->
+            <div class="flex gap-2">
+                <img
+                 src="./assets/Pizza Doce.avif"
+                 alt="Pizza Doce"
+                 class="w-28 h-28 rounded-md hover:scan-11 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Pizza Doce </p>
+                    <p class="text-sm">Chocolate, Creme de Leite, Morango, confeito de Chocolate.</p>
+
+                    <div class="flex items-center gap-2 justify-between mt-3"> 
+                        <p class="font-blond text-lg">R$ 29.90</p>
+                        <button 
+                            class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                            data-name="Pizza Doce"
+                            data-price="29.90"
+                            >
+                            
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIM DO PRODUTO-->
+
+        </main>
+
+    </div>
+    <!--FIM DO MENU-->
 </body>
 </html>
