@@ -6,7 +6,7 @@ const cartTotal = document.getElementById("cart-total")
 const checkoutBtn = document.getElementById("checkout-btn")
 const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
-const addressImput = document.getElementById("address")
+const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
 let cart = []
@@ -76,11 +76,11 @@ function updateCartModal(){
                 <p class= "font-medium mt-2">R$ ${item.price.toFixed(2)}<p/>
             </div> 
 
-             <button class "remove-from-cart-btn" data-name="${item.name}">  
+             <button class="remove-from-cart-btn" data-name="${item.name}">  
                  Remover
             </button>
            
-        </div> 
+        </div>
     ` 
     total += item.price * item.quantity;
 
@@ -92,6 +92,7 @@ function updateCartModal(){
 }
 
 //Função para remover o item do carrinho
+
 cartItemsConteiner.addEventListener("click", function(event){
     if(event.target.classList.contains("remove-from-cart-btn")){
         const name = event.target.getAttribute("data-name")
@@ -118,3 +119,92 @@ function removeItemCart(name){
         updateCartModal();
     }
 }
+
+    // Iniçio da alteração...001
+    // aviso de mensagem de erro ao invalidar email, e borda vermelha na box de mensg, e sumir a borda quando digitar de novo.
+
+addressInput.addEventListener("input", function(event){
+    let inputValue = event.target.value;
+
+    if(inputValue !== ""){
+        addressInput.classList.remove("border-red-500")
+        addressWarn.classList.add("hidden")
+    }
+})
+
+//inicio da alteração...003
+    //Finalizar pedido
+checkoutBtn.addEventListener("click", function(){
+
+    const isOpen = checkrestauranteopen();
+    if(!isOpen){
+        
+        Toastify({
+        text: "Ops, o restaurante esta fechado!",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "#ef4444)",
+        },
+     }).showToast();
+
+     
+        return;
+    }
+
+    if(cart.length === 0) return;
+    if(addressInput.value === ""){
+      addressWarn.classList.remove("hidden")
+      addressInput.classList.add("border-red-500")
+      return;
+    }
+
+    //usado pra fins de teste desabilitando parte do codigo que barra o envio do pedido.
+    //usado pra vereficar se os detalhes do pedido seriam mostrados, no caso de estar no horario fechado e precisou verificar apenas. sem relevancia a linha
+    //console.log(cart)
+
+    //Enviar pedido para API Whatsapp 
+    const cartItems = cart.map((item) => {
+        return (
+           ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+        )
+    }).join("")
+
+    const message = encodeURIComponent(cartItems)
+    const phone = "91993077529"
+
+    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+
+    cart = [];
+    updateCartModal();
+})
+
+// ...fim da alteração 001!
+
+// Iniçio da alteração...002
+
+function checkrestauranteopen(){
+    const data = new Date();
+    const hora = data.getHours ();
+    return hora >= 18 && hora <23;
+    //restaurante está aberto
+}
+
+const spanItem = document.getElementById("date-span")
+const isOpen = checkrestauranteopen();
+
+if(isOpen){
+    spanItem.classList.remove("bg-red-500");
+    spanItem.classList.add("bg-green-600")
+}else{
+    spanItem.classList.remove("bg-green-600")
+    spanItem.classList.add("bg-red-500")
+}
+
+//...Fim da alteração 002!
+
+
+
