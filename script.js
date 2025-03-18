@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
 const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
+const addressWarnEmptyCart = document.getElementById("address-warn-cart-empty")
 
 let cart = []
 
@@ -56,7 +57,15 @@ function addToCart(name, price){
         })  
      }
 
-    updateCartModal()  
+    updateCartModal() 
+
+    if (cart.length > 0) {
+        const addressWarnEmptyCart = document.getElementById('address-warn-cart-empty');
+        if (addressWarnEmptyCart) {
+            addressWarnEmptyCart.classList.add("hidden");
+        }
+    }
+
 }
 
 // Atualiza o carrinho
@@ -88,7 +97,8 @@ function updateCartModal(){
     });
 
     cartTotal.textContent = total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})
-    cartCounter.innerHTML = cart.length;
+    // Atualiza o contador com a quantidade total de itens no carrinho
+    cartCounter.innerHTML = cart.reduce((total, item) => total + item.quantity, 0);
 }
 
 //Função para remover o item do carrinho
@@ -120,7 +130,6 @@ function removeItemCart(name){
     }
 }
 
-    // Iniçio da alteração...001
     // aviso de mensagem de erro ao invalidar email, e borda vermelha na box de mensg, e sumir a borda quando digitar de novo.
 
 addressInput.addEventListener("input", function(event){
@@ -132,7 +141,6 @@ addressInput.addEventListener("input", function(event){
     }
 })
 
-//inicio da alteração...003
     //Finalizar pedido
 checkoutBtn.addEventListener("click", function(){
 
@@ -155,41 +163,70 @@ checkoutBtn.addEventListener("click", function(){
         return;
     }
 
-    if(cart.length === 0) return;
+    if (cart.length === 0) {
+        // Exibe a mensagem de erro se o carrinho estiver vazio
+         Toastify({
+            text: "O carrinho está vazio!",
+            duration: 6000,
+            close: true,
+            gravity: "top", // A gravidade vai controlar se é "top" ou "bottom", mas não muda muito o centralizado
+            position: "center", // Isso coloca a notificação no centro da tela
+            stopOnFocus: true,
+            style: {
+                background: "#ef4444", // Definindo a cor do fundo da mensagem
+                padding: "16px 32px", // Aumentando o padding para tornar o toast maior
+                borderRadius: "8px", // Fazendo os cantos arredondados
+                fontSize: "18px", // Aumentando o tamanho da fonte
+                textAlign: "center", // Garantindo que o texto esteja centralizado dentro do toast
+                width: "auto", // Fazendo com que o toast tenha largura automática com base no conteúdo
+                maxWidth: "400px", // Define um limite de largura para o toast
+                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Adiciona uma sombra para o toast
+            },
+        }).showToast();
+
+         addressWarnEmptyCart.classList.remove("hidden")
+         addressInput.classList.add("border-red-500")
+
+        return; // Impede a execução do restante do código se o carrinho estiver vazio
+    }
+    
+    //if(cart.length === 0) return;
     if(addressInput.value === ""){
       addressWarn.classList.remove("hidden")
       addressInput.classList.add("border-red-500")
       return;
     }
 
-    //usado pra fins de teste desabilitando parte do codigo que barra o envio do pedido.
-    //usado pra vereficar se os detalhes do pedido seriam mostrados, no caso de estar no horario fechado e precisou verificar apenas. sem relevancia a linha
-    //console.log(cart)
+    // Enviar pedido para API Whatsapp 
+const cartItems = cart.map((item) => {
+    return (
+        `${item.name} 
+        | Quantidade: (${item.quantity}) 
+        | Preço: R$${item.price.toFixed(2)} 
+        `
+    );
+}).join("\n"); // Adicionando quebra de linha entre cada item
 
-    //Enviar pedido para API Whatsapp 
-    const cartItems = cart.map((item) => {
-        return (
-           ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
-        )
-    }).join("")
+// Calcular o total
+let total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+const totalFormatted = `--------------------------------------------------\n| Total: R$ ${total.toFixed(2)}\n| Endereço: ${addressInput.value}`;
+const message = encodeURIComponent(cartItems + "\n" + totalFormatted);
 
-    const message = encodeURIComponent(cartItems)
-    const phone = "91993077529"
+const phone = "91980842421";
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 
-    cart = [];
-    updateCartModal();
+
+cart = [];
+updateCartModal();
+
+
 })
-
-// ...fim da alteração 001!
-
-// Iniçio da alteração...002
 
 function checkrestauranteopen(){
     const data = new Date();
     const hora = data.getHours ();
-    return hora >= 18 && hora <23;
+    return hora >= 10 && hora <23;
     //restaurante está aberto
 }
 
@@ -203,8 +240,3 @@ if(isOpen){
     spanItem.classList.remove("bg-green-600")
     spanItem.classList.add("bg-red-500")
 }
-
-//...Fim da alteração 002!
-
-
-
