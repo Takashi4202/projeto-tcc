@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f0f0;">
+        <div style="background-color: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 350px;">
+            <h2 style="text-align: center; font-family: Arial; margin-bottom: 20px;">Cadastrar-se</h2>
+            <form id="register-form">
+                <div style="margin-bottom: 15px;">
+                    <label for="email" style="display: block; margin-bottom: 5px; font-family: Arial;">Email</label>
+                    <input type="email" id="email" name="email" style="width: calc(100% - 12px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="password" style="display: block; font-family: Arial; margin-bottom: 5px;">Crie uma senha</label>
+                    <input type="password" id="password" name="password" style="width: calc(100% - 12px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="confirm-password" style="display: block; font-family: Arial; margin-bottom: 5px;">Confirmar senha</label>
+                    <input type="password" id="confirm-password" name="confirm-password" style="width: calc(100% - 12px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: Arial;">inscrever-se</button>
+                </div>
+            </form>
+            <div style="text-align: center; margin-top: 10px; font-family: Arial;">
+                Já possui uma conta? <a href="/login">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Aqui você pode adicionar a lógica para enviar os dados para o servidor Node.js
+            // e cadastrar o usuário, verificando se as senhas coincidem.
+            if (password !== confirmPassword) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            console.log("Email:", email, "Senha:", password, "Confirmar Senha:", confirmPassword);
+        });
+    </script>
+</body>
+</html>

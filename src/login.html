@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="position: relative; background-image: url('assets/fundo_comida_.PNG'); background-size: cover; background-position: center center; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: Arial; margin: 0; padding: 0;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+    <div style="position: relative; background-color: white; padding: 40px; border: 2px solid black; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 350px;">
+        <h2 style="text-align: center; margin-bottom: 25px; font-family: Arial;">Faça seu Login</h2>
+        <form id="login-form">
+            <div style="margin-bottom: 20px; font-family: Arial;">
+                <label for="email" style="display: block; margin-bottom: 8px; font-family: Arial;">Email</label>
+                <input type="email" id="email" name="email" style="width: calc(100% - 16px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: Arial;">
+            </div>
+            <div style="margin-bottom: 20px; font-family: Arial;">
+                <label for="password" style="display: block; margin-bottom: 8px; font-family: Arial;">Senha</label>
+                <input type="password" id="password" name="password" style="width: calc(100% - 16px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: Arial;">
+            </div>
+            <div style="margin-bottom: 20px; font-family: Arial;">
+                <button type="submit" style="width: 100%; padding: 12px; background-color: red; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: Arial;">Entrar</button>
+            </div>
+        </form>
+        <div style="text-align: center; margin-top: 15px; font-family: Arial;">
+            Ainda não possui uma conta? <a href="/signup" style="font-family: Arial;">Cadastrar-se</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Aqui você pode adicionar a lógica para enviar os dados para o servidor Node.js
+            // e verificar o login.
+            console.log("Email:", email, "Senha:", password);
+        });
+    </script>
+</body>
+</html>
